@@ -1,5 +1,4 @@
 import Express from 'express';
-import config from '../config/config';
 import userService from '../services/userService';
 
 const app = Express();

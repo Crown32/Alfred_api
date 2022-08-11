@@ -4,7 +4,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
-import route from '../routes/route';
+import userRoute from '../routes/userRoute';
+import guppyRoute from '../routes/guppyRoute';
 import mongoose from 'mongoose';
 import {ConnectOptions} from 'mongoose';
 
@@ -14,7 +15,9 @@ export default {
   env: {
     PORT: process.env.PORT || 3000,
     NODE_ENV: process.env.NODE_ENV || 'development',
-    MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017/test',
+    MONGO_URI: process.env.MONGO_URI || (()=>{throw new Error('env variable MONGO_URI is not defined')})(),
+    GUPPY_CLIENT_ID: process.env.GUPPY_CLIENT_ID || (()=>{throw new Error('env variable GUPPY_CLIENT_ID is not defined')})(),
+    GUPPY_CLIENT_SECRET: process.env.GUPPY_CLIENT_SECRET || (()=>{throw new Error('env variable GUPPY_CLIENT_SECRET is not defined')})(),
   },
   express: {
     config(app: Express.Application) {
@@ -22,7 +25,8 @@ export default {
       app.use(helmet());
       app.use(cors());
       app.use(morgan('dev'));
-      app.use('/user', route);
+      app.use('/user', userRoute);
+      app.use('/guppy', guppyRoute);
       return app;
     },
   },
