@@ -1,18 +1,20 @@
 {
-    "name": "finance_app_api",
+    "name": "finance_app_backend",
     "version": "1.0.0",
-    "description": "api for fetching data for financeApp",
+    "description": "",
     "main": "index.js",
-    "type": "module",
     "scripts": {
-        "start": "nodemon tsc src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+        "dev-nodemon": "nodemon --exec ts-node ./src/index.ts",
+        "start": "ts-node src/index.ts",
+        "build": "tsc",
+        "lint": "eslint . --ext .ts"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Crown32/finance-app-api.git"
     },
-    "author": "Lucas Eleutério Bueno",
+    "author": "",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/Crown32/finance-app-api/issues"
@@ -24,10 +26,21 @@
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
         "helmet": "^5.1.1",
-        "mongoose": "^6.5.1",
+        "mongoose": "^6.5.2",
         "morgan": "^1.10.0",
         "nodemon": "^2.0.19",
-        "pluggy-sdk": "^0.14.2",
+        "ts-node": "^10.9.1",
+        "ts-node-dev": "^2.0.0",
         "typescript": "^4.7.4"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.13",
+        "@types/morgan": "^1.9.3",
+        "@typescript-eslint/eslint-plugin": "^5.33.0",
+        "@typescript-eslint/parser": "^5.33.0",
+        "eslint": "^8.21.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.26.0"
     }
 }
